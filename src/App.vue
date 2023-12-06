@@ -23,16 +23,20 @@ export default {
   },
   methods: {
     async fetchFoods() {
-      try {
-        const response = await fetch('https://unh-nodejs-web.onrender.com/api');
-        const data = await response.json();
-        return data; // Return the data
-      } catch (error) {
-        console.error('Error fetching foods:', error);
-        return []; // Return an empty array in case of an error
-      }
-    },
-  },
+  try {
+    const response = await fetch('https://mongo-node-nd72.onrender.com/api');
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching foods:', error);
+    return [];
+  }
+}
+
+  }, 
   async created() {
     this.foods = await this.fetchFoods();
   },
