@@ -24,7 +24,7 @@ export default {
   methods: {
     async fetchFoods() {
       try {
-        const response = await fetch('http://localhost:8112/Food');
+        const response = await fetch('https://unh-nodejs-web.onrender.com/api');
         const data = await response.json();
         return data; // Return the data
       } catch (error) {
